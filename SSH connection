@@ -1,0 +1,138 @@
+hamhoumnermine
+4:52 PM
+
+Connexion SSH sur la carte RPi
+C:\Users\stri>ssh etu@172.16.96.24
+The authenticity of host '172.16.96.24 (172.16.96.24)' can't be established.
+ECDSA key fingerprint is SHA256:/+GPpCXufUoP+hcTqEvsokJTCqS57c0uA4s5Rliwrq0.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '172.16.96.24' (ECDSA) to the list of known hosts.
+etu@172.16.96.24's password:
+Linux rpi-e04 6.1.21-v8+ #1642 SMP PREEMPT Mon Apr  3 17:24:16 BST 2023 aarch64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Wed Apr 12 10:15:19 2023
+etu@rpi-e04:~ $ w
+ 13:55:54 up 15 min,  2 users,  load average: 0,05, 0,10, 0,10
+UTIL.    TTY      DE               LOGIN@   IDLE   JCPU   PCPU QUOI
+etu      pts/0    198.18.16.118    13:54    1.00s  0.17s  0.04s w
+etu      pts/1    198.18.16.119    13:54   50.00s  0.17s  0.17s -bash
+etu@rpi-e04:~ $ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: enxb827ebe3d1b7: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether b8:27:eb:e3:d1:b7 brd ff:ff:ff:ff:ff:ff
+    inet 172.16.96.24/24 brd 172.16.96.255 scope global dynamic noprefixroute enxb827ebe3d1b7
+       valid_lft 1227sec preferred_lft 1227sec
+    inet6 2001:678:3fc:60:e351:70b9:d352:872a/64 scope global dynamic noprefixroute
+       valid_lft 86300sec preferred_lft 14300sec
+    inet6 fe80::4d12:1cb7:b0e8:c537/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+3: wlan0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc pfifo_fast state DOWN group default qlen 1000
+    link/ether 7e:8a:ee:a0:b6:65 brd ff:ff:ff:ff:ff:ff permaddr b8:27:eb:b6:84:e2
+etu@rpi-e04:~ $
+
+Séance 3- Compte utilisateur et groupes
+    Host rpi-e04
+         HostName: rpi-e04.local
+         User nermine
+puis
+
+etu@rpi-e04:~ $ sudo adduser nermine
+Ajout de l'utilisateur « nermine » ...
+Ajout du nouveau groupe « nermine » (1002) ...
+Ajout du nouvel utilisateur « nermine » (1002) avec le groupe « nermine » ...
+Création du répertoire personnel « /home/nermine »...
+Copie des fichiers depuis « /etc/skel »...
+Nouveau mot de passe :
+Retapez le nouveau mot de passe :
+passwd: password updated successfully
+Changing the user information for nermine
+Enter the new value, or press ENTER for the default
+        Full Name []: nermine
+        Room Number []:
+        Work Phone []:
+        Home Phone []:
+        Other []:
+4:59 PM
+
+3)Validation de la connexion SSH et de la configuration du client SSH 
+C:\Users\stri.ssh>ssh rpi-e04 "chmod 600 .ssh/authorized_keys"
+nermine@172.16.96.24's password:
+
+C:\Users\stri.ssh> type id_ed25519.pub | ssh rpi-e04 "cat >> .ssh/authorized_keys"
+nermine@172.16.96.24's password:
+
+C:\Users\stri.ssh>ssh rpi-e04
+Linux rpi-e04 6.1.21-v8+ #1642 SMP PREEMPT Mon Apr  3 17:24:16 BST 2023 aarch64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+nermine@rpi-e04:~ $ exit
+déconnexion
+Connection to 172.16.96.24 closed.
+
+C:\Users\stri.ssh>ssh rpi-e04
+Linux rpi-e04 6.1.21-v8+ #1642 SMP PREEMPT Mon Apr  3 17:24:16 BST 2023 aarch64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Wed Apr 12 14:59:47 2023 from 198.18.16.118
+nermine@rpi-e04:~ $
+22 avril
+samar.hichri88
+10:33 AM
+1. Connexion et raccordement aux réseaux filaires et Wifi:
+
+MacBook-Air-de-Hichri:~ hichrisamar$ ssh etu@172.16.96.24
+
+The authenticity of host '172.16.96.24 (172.16.96.24)' can't be established.
+
+ED25519 key fingerprint is SHA256:CNyo3xAFb+H+eu6Ry/xokWgO/iiUUmJElPSHbifO1yo.
+
+This key is not known by any other names
+
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+
+Warning: Permanently added '172.16.96.24' (ED25519) to the list of known hosts.
+
+etu@172.16.96.24's password:
+
+Linux rpi-e04 6.1.21-v8+ #1642 SMP PREEMPT Mon Apr 3 17:24:16 BST 2023 aarch64
+
+  
+
+The programs included with the Debian GNU/Linux system are free software;
+
+the exact distribution terms for each program are described in the
+
+individual files in /usr/share/doc/*/copyright.
+
+  
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+
+permitted by applicable law.
+
+Last login: Wed Apr 12 13:54:06 2023 from 198.18.16.118
+
+  
+
+etu@rpi-e04:~ $ w
